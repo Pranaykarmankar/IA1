@@ -1,0 +1,21 @@
+# Managed by Ansible - do not edit manually
+server {
+    listen {{ web_port }};
+    server_name {{ inventory_hostname }};
+
+    root {{ web_root }};
+    index index.html;
+
+    access_log /var/log/nginx/shopeasy_access.log;
+    error_log  /var/log/nginx/shopeasy_error.log;
+
+    location / {
+        try_files $uri $uri/ =404;
+    }
+
+    location /health {
+        access_log off;
+        return 200 "OK\n";
+        add_header Content-Type text/plain;
+    }
+}

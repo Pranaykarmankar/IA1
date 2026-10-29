@@ -1,0 +1,25 @@
+---
+app_name: ShopEasy
+app_version: "1.0.0"
+app_env: staging
+
+# Web tier
+web_root: /var/www/shopeasy
+web_port: 80
+web_packages:
+  - nginx
+  - git
+  - curl
+
+# Database tier
+db_packages:
+  - mysql-server
+  - python3-pymysql
+db_name: shopeasy_db
+db_user: shopeasy_user
+# For the assignment demo only. In real projects encrypt with: ansible-vault encrypt_string
+db_password: "ChangeMe@123"
+
+# Monitoring tier
+node_exporter_version: "1.8.2"
+node_exporter_port: 9100
